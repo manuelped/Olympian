@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-        public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
             Button btn_login, btn_register, btn_login_anonymous;
             EditText email, password;
             FirebaseAuth mAuth;
@@ -65,25 +65,28 @@ import com.google.firebase.auth.FirebaseUser;
                 });
             }
 
-            private void loginAnonymous() {
-                mAuth.signInAnonymously()
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                }
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginActivity.this, "Error al acceder", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
+    private void loginAnonymous() {
+        mAuth.signInAnonymously()
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish(); // Agrega esta línea para cerrar la LoginActivity
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(LoginActivity.this, "Error al acceder", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
-            private void loginUser(String emailUser, String passUser) {
+
+    private void loginUser(String emailUser, String passUser) {
                 mAuth.signInWithEmailAndPassword(emailUser, passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
