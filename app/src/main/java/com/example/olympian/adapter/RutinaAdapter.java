@@ -35,8 +35,8 @@ public class RutinaAdapter extends RecyclerView.Adapter<RutinaAdapter.ViewHolder
         Rutina rutina = rutinaList.get(position);
         Log.d("zzzzzz", "onBindViewHolder: " + rutina);
         holder.nombre.setText(rutina.getNombre());
-        holder.series.setText(String.valueOf(rutina.getSeries()));
-        holder.repeticiones.setText(String.valueOf(rutina.getRepeticiones()));
+        holder.series.setText("series: " + String.valueOf(rutina.getSeries()));
+        holder.repeticiones.setText("Repeticiones: " +String.valueOf(rutina.getRepeticiones()));
         holder.image.setImageResource(R.drawable.logo);
     }
 
