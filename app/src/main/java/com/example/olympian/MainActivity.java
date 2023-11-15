@@ -82,14 +82,18 @@ public class MainActivity extends AppCompatActivity{
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        rutinaList.clear();
+
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Rutina rutina = document.toObject(Rutina.class);
                             rutinaList.add(rutina);
                         }
+
                         rutinaAdapter.notifyDataSetChanged();
                     } else {
                         Log.d("Firestore", "Error getting documents: ", task.getException());
                     }
                 });
     }
+
 }

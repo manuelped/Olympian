@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.olympian.R;
 import com.example.olympian.model.Rutina;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -33,11 +34,20 @@ public class RutinaAdapter extends RecyclerView.Adapter<RutinaAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolderRutina holder, int position) {
         Rutina rutina = rutinaList.get(position);
+        
+        holder.nombre.setText(rutina.getNombre());
+        holder.series.setText(String.valueOf(rutina.getSeries()));
+        holder.repeticiones.setText(String.valueOf(rutina.getRepeticiones()));
+
         Log.d("zzzzzz", "onBindViewHolder: " + rutina);
         holder.nombre.setText(rutina.getNombre());
         holder.series.setText("series: " + String.valueOf(rutina.getSeries()));
         holder.repeticiones.setText("Repeticiones: " +String.valueOf(rutina.getRepeticiones()));
-        holder.image.setImageResource(R.drawable.logo);
+        if (rutina.getImagen() != null && !rutina.getImagen().isEmpty()) {
+            Picasso.get().load(rutina.getImagen()).into(holder.imagen);
+        } else {
+            holder.imagen.setImageResource(R.drawable.logo);
+        }
     }
 
     @Override
@@ -47,14 +57,14 @@ public class RutinaAdapter extends RecyclerView.Adapter<RutinaAdapter.ViewHolder
 
     public static class ViewHolderRutina extends RecyclerView.ViewHolder {
         TextView nombre, series, repeticiones;
-        ImageView image;
+        ImageView imagen;
 
         public ViewHolderRutina(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.nombre);
             series = itemView.findViewById(R.id.series);
             repeticiones = itemView.findViewById(R.id.repeticiones);
-            image = itemView.findViewById(R.id.imgRutina);
+            imagen = itemView.findViewById(R.id.imgRutina);
         }
     }
 }

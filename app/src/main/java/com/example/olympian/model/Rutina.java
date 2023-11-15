@@ -4,7 +4,7 @@ public class Rutina {
     String nombre;
     int series;
     int repeticiones;
-    String imagen;
+    String imagenURL;
 
     public Rutina() {}
 
@@ -12,7 +12,7 @@ public class Rutina {
         this.nombre = nombre;
         this.series = series;
         this.repeticiones = repeticiones;
-        this.imagen = imagen;
+        this.imagenURL = imagen;
     }
 
     public String getNombre() {
@@ -40,10 +40,10 @@ public class Rutina {
     }
 
     public String getImagen() {
-        return imagen;
+        return imagenURL;
     }
 
     public void setImagen(String imagen) {
-        this.imagen = imagen;
+        this.imagenURL = imagen;
     }
 }
