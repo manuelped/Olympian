@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "766334224499",
+    "project_id": "olympian-219b9",
+    "storage_bucket": "olympian-219b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766334224499:android:aa8e7c718340ceaf5e0206",
+        "android_client_info": {
+          "package_name": "com.example.olympian"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Z0P1VH5B7cP9H-xE9eLIbXTYUyu3Gp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
